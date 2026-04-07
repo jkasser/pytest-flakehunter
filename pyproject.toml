@@ -1,0 +1,36 @@
+[build-system]
+requires = ["uv_build >= 0.10.10, <0.11.0"]
+build-backend = "uv_build"
+
+[project]
+name = "pytest-flakehunter"
+version = "1.0.0"
+description = "Re-run tests N times, visualize failure heatmaps, and get AI root cause hypotheses"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+authors = [{ name = "jkasser" }]
+keywords = ["pytest", "flaky", "testing", "qa", "heatmap", "ai"]
+classifiers = [
+    "Framework :: Pytest",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Testing",
+    "Operating System :: OS Independent",
+]
+dependencies = ["pytest>=7.0"]
+
+[project.urls]
+Homepage = "https://github.com/jkasser/pytest-flakehunter"
+Repository = "https://github.com/jkasser/pytest-flakehunter"
+"Bug Tracker" = "https://github.com/jkasser/pytest-flakehunter/issues"
+
+[project.optional-dependencies]
+xdist = ["pytest-xdist"]
+ai = []  # Anthropic API uses stdlib urllib; env vars loaded by uv from .env automatically
+
+[project.entry-points."pytest11"]
+flakehunter = "pytest_flakehunter.plugin"
